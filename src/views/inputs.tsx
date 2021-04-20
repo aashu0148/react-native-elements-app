@@ -42,22 +42,23 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
   let confirmPassword2Input = useRef(null);
 
   const InputFieldsStyle = {
-    borderWidth: 0   
+    borderWidth: 0,
   };
 
   const inputProps = {};
   return (
-    <KeyboardAvoidingView
-      style={styles.keyboardAvoidingView}
-      behavior={'padding'}
-      enabled
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 84}
-    >
+    <View>
       <Header title="Inputs" />
       <ScrollView keyboardShouldPersistTaps="handled">
-        <View>
-          <SubHeader title={'Search Bars'} />
-        </View>
+        <SubHeader title={'Simple Input'} />
+
+        <Input
+          {...(inputProps as InputProps)}
+          containerStyle={styles.inputContainerStyle}
+          placeholder="Basic input"
+          style={InputFieldsStyle}
+        />
+        <SubHeader title={'Search Bars'} />
         <SearchBarCustom
           placeholder="iOS searchbar"
           platform="ios"
@@ -75,7 +76,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
           style={InputFieldsStyle}
           {...dummySearchBarProps}
         />
-        <View style={{paddingTop: 30}}>
+        <View style={{ paddingTop: 30 }}>
           <SubHeader title={'Inputs'} />
         </View>
         <View style={{ alignItems: 'center', marginBottom: 16 }}>
@@ -148,7 +149,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
           <View
             style={{
               backgroundColor: '#2F343B',
-              width:"100%",
+              width: '100%',
               alignItems: 'center',
             }}
           >
@@ -172,7 +173,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
                   borderColor: 'white',
                   borderLeftWidth: 0,
                   height: 50,
-                  width:"80%",
+                  width: '80%',
                   backgroundColor: 'white',
                 }}
                 leftIcon={
@@ -210,7 +211,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
                   borderColor: 'white',
                   borderLeftWidth: 0,
                   height: 50,
-                  width:"80%",
+                  width: '80%',
                   backgroundColor: 'white',
                 }}
                 leftIconContainerStyle={{
@@ -267,7 +268,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
             <View
               style={{
                 backgroundColor: 'rgba(46, 50, 72, 1)',
-                width:"100%",
+                width: '100%',
                 alignItems: 'center',
                 paddingBottom: 30,
               }}
@@ -374,7 +375,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
           </ThemeProvider>
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -421,10 +422,6 @@ const styles = StyleSheet.create({
   inputContainerStyle: {
     marginTop: 16,
     width: '90%',
-  },
-  keyboardAvoidingView: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    ouline: 'none',
   },
 });
